@@ -1,2 +1,1 @@
-# vitta-setu
 Banking WebApp
