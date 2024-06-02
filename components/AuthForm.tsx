@@ -4,13 +4,12 @@ import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import Link from "next/link";
-import { CiBank } from "react-icons/ci";
 
 import { authFormSchema } from "@/lib/utils";
 import { Form } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import CustomInput from "./CustomInput";
+import Header from "./Header";
 
 const AuthForm = ({ type }: AuthFormProps) => {
   const formSchema = authFormSchema(type);
@@ -32,12 +31,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
   return (
     <section className="flex min-h-screen max-w-[460px] flex-col justify-center gap-5 p-10 md:gap-8">
       <header className="flex flex-col gap-5 md:gap-8">
-        <Link href="/" className="cursor-pointer flex items-center gap-1">
-          <CiBank className=" w-8 h-8 fill-slate-400" />
-          <h1 className=" text-2xl font-ibm-plex-serif font-bold text-black-1">
-            Vitta-Setu
-          </h1>
-        </Link>
+        <Header />
 
         <div className="flex flex-col gap-1 md:gap-3">
           <h1 className="text-xl lg:text-3xl font-semibold text-gray-900">
