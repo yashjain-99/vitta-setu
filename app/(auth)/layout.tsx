@@ -13,7 +13,7 @@ export default function RootLayout({
           <Image
             src="/assets/img/auth-bg.jpg"
             alt="Auth image"
-            width={700}
+            width={650}
             height={600}
             className="rounded-l-xl object-contain"
           />

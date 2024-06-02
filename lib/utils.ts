@@ -9,16 +9,75 @@ export function cn(...inputs: ClassValue[]) {
 export const authFormSchema = (type: string) =>
   z.object({
     // login
-    firstName: type === "login" ? z.string().optional() : z.string().min(3),
-    lastName: type === "login" ? z.string().optional() : z.string().min(3),
-    address1: type === "login" ? z.string().optional() : z.string().max(50),
-    city: type === "login" ? z.string().optional() : z.string().max(50),
-    state: type === "login" ? z.string().optional() : z.string().min(2).max(2),
+    firstName:
+      type === "login"
+        ? z.string().optional()
+        : z.string().min(3, {
+            message: "First name must be at least 3 characters long.",
+          }),
+    lastName:
+      type === "login"
+        ? z.string().optional()
+        : z.string().min(3, {
+            message: "Last name must be at least 3 characters long.",
+          }),
+    address1:
+      type === "login"
+        ? z.string().optional()
+        : z.string().max(50, {
+            message: "Address must be less than or equal to 50 characters.",
+          }),
+    city:
+      type === "login"
+        ? z.string().optional()
+        : z.string().max(50, {
+            message: "City must be less than or equal to 50 characters.",
+          }),
+    state:
+      type === "login"
+        ? z.string().optional()
+        : z
+            .string()
+            .length(2, { message: "State must be exactly 2 characters long." }),
     postalCode:
-      type === "login" ? z.string().optional() : z.string().min(3).max(6),
-    dateOfBirth: type === "login" ? z.string().optional() : z.string().min(3),
-    ssn: type === "login" ? z.string().optional() : z.string().min(3),
+      type === "login"
+        ? z.string().optional()
+        : z
+            .string()
+            .min(3, {
+              message: "Postal code must be at least 3 characters long.",
+            })
+            .max(6, {
+              message:
+                "Postal code must be less than or equal to 6 characters.",
+            }),
+    dateOfBirth:
+      type === "login"
+        ? z.string().optional()
+        : z.string().regex(/^\d{4}-\d{2}-\d{2}$/, {
+            message: "Date of Birth must be in YYYY-MM-DD format.",
+          }),
+    pan:
+      type === "login"
+        ? z.string().optional()
+        : z
+            .string()
+            .regex(/^[A-Z]{5}[0-9]{4}[A-Z]$/, {
+              message: "PAN must be in the format AAAAA9999A.",
+            }),
+    password:
+      type === "login"
+        ? z.string()
+        : z
+            .string()
+            .min(8, { message: "Password must be at least 8 characters long." })
+            .regex(
+              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+              {
+                message:
+                  "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
+              }
+            ),
     // both
-    email: z.string().email(),
-    password: z.string().min(8),
+    email: z.string().email({ message: "Invalid email address." }),
   });

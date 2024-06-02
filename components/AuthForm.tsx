@@ -1,18 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { authFormSchema } from "@/lib/utils";
 import { Form } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
 import CustomInput from "./CustomInput";
 import Header from "./Header";
+import SubmitButton from "./SubmitButton";
+import { useFormState } from "react-dom";
+import { dummyAuthAction, State } from "@/lib/actions/auth";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+
+type AuthFormProps = {
+  type: "register" | "login";
+};
 
 const AuthForm = ({ type }: AuthFormProps) => {
   const formSchema = authFormSchema(type);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -20,16 +29,30 @@ const AuthForm = ({ type }: AuthFormProps) => {
       email: "",
       password: "",
     },
+    mode: "all",
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-  }
+  const [state, formAction] = useFormState<State, FormData>(
+    (prevState, data) => dummyAuthAction(prevState, data, type),
+    null
+  );
+
+  useEffect(() => {
+    if (!state) {
+      return;
+    }
+    if (form.formState.isValid) {
+      if (state.status === "success") {
+        router.push("/");
+      }
+    }
+    if (state.status === "error") {
+      form.trigger();
+    }
+  }, [state, form]);
 
   return (
-    <section className="flex min-h-screen max-w-[460px] flex-col justify-center gap-5 p-10 md:gap-8">
+    <section className="flex lg:min-h-screen max-w-[460px] flex-col justify-center gap-5 p-10 md:gap-8 max-lg:border max-lg:rounded-md max-lg:border-gray-300">
       <header className="flex flex-col gap-5 md:gap-8">
         <Header />
 
@@ -43,7 +66,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
         </div>
       </header>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form action={formAction} className="space-y-4">
           {type === "register" && (
             <>
               <div className="flex gap-4">
@@ -95,8 +118,8 @@ const AuthForm = ({ type }: AuthFormProps) => {
                 />
                 <CustomInput
                   control={form.control}
-                  name="ssn"
-                  label="SSN"
+                  name="pan"
+                  label="PAN"
                   placeholder="Example: 1234"
                 />
               </div>
@@ -116,14 +139,26 @@ const AuthForm = ({ type }: AuthFormProps) => {
             label="Password"
             placeholder="Enter your password"
           />
-          <Button
-            type="submit"
-            className="w-full border rounded-lg text-white font-semibold text-base bg-gradient-to-r from-[#0179FE] to-[#4893FF] hover:from-[#0056D2] hover:to-[#3678D2] hover:border-[#0056D2] hover:shadow-lg"
-          >
-            Submit
-          </Button>
+          <SubmitButton isValid={form.formState.isValid} />
         </form>
       </Form>
+      <footer className="flex gap-1 text-sm">
+        {type === "login" ? (
+          <>
+            <span>Don’t have an account?</span>
+            <Link href="/register" className="text-[#0179FE]">
+              Register
+            </Link>
+          </>
+        ) : (
+          <>
+            <span>Already have an account?</span>
+            <Link href="/login" className="text-[#0179FE]">
+              Login
+            </Link>
+          </>
+        )}
+      </footer>
     </section>
   );
 };
