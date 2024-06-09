@@ -3,7 +3,7 @@ import { CiBank } from "react-icons/ci";
 
 import React from "react";
 
-const Header = () => {
+const BrandHeader = () => {
   return (
     <Link href="/" className="cursor-pointer flex items-center gap-1">
       <CiBank className=" w-8 h-8 fill-slate-400" />
@@ -14,4 +14,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default BrandHeader;

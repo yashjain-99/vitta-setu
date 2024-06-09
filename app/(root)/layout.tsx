@@ -8,7 +8,7 @@ export default function RootLayout({
   return (
     <main className="flex w-full min-h-screen">
       <Sidebar />
-      {children}
+      <div className="flex-grow overflow-y-auto">{children}</div>
     </main>
   );
 }

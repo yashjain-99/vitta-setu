@@ -46,7 +46,6 @@ export async function GET(req: Request) {
         { status: 401 }
       );
     } else {
-      console.error("Error processing login request:", err);
       return NextResponse.json(
         {
           status: "error",

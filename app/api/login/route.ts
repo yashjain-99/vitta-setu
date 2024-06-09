@@ -78,7 +78,6 @@ export async function POST(req: Request) {
 
     return response;
   } catch (error) {
-    console.error("Error processing login request:", error);
     return NextResponse.json(
       {
         status: "error",

@@ -13,7 +13,6 @@ export async function middleware(request: NextRequest) {
         },
       }
     );
-    const verifiedJwtResult = await verifiedJwtResponse.json();
 
     if (verifiedJwtResponse.ok) {
       return NextResponse.next();

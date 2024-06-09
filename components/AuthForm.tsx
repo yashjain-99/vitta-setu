@@ -8,7 +8,7 @@ import { z } from "zod";
 import { authFormSchema } from "@/lib/utils";
 import { Form } from "@/components/ui/form";
 import CustomInput from "./CustomInput";
-import Header from "./Header";
+import BrandHeader from "./BrandHeader";
 import SubmitButton from "./SubmitButton";
 import { useFormState } from "react-dom";
 import { dummyAuthAction, State } from "@/lib/actions/auth";
@@ -54,7 +54,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
   return (
     <section className="flex lg:min-h-screen max-w-[460px] flex-col justify-center gap-5 p-10 md:gap-8 max-lg:border max-lg:rounded-md max-lg:border-gray-300">
       <header className="flex flex-col gap-5 md:gap-8">
-        <Header />
+        <BrandHeader />
 
         <div className="flex flex-col gap-1 md:gap-3">
           <h1 className="text-xl lg:text-3xl font-semibold text-gray-900">

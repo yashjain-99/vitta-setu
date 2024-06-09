@@ -38,6 +38,7 @@ const CustomInput = ({
           <FormControl>
             <Input
               placeholder={placeholder}
+              type={name === "password" ? "password" : "text"}
               className=" min-w-fit text-base placeholder:text-base font-normal font-inter text-[#667085] rounded-lg border border-gray-300 focus:border-blue-500"
               {...field}
             />
