@@ -7,12 +7,16 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table";
+import { getTransactionsData } from "@/lib/actions/account";
 
-const RecentTransactionTable = ({
-  transactions,
+const RecentTransactionTable = async ({
+  accountId,
+  userId,
 }: {
-  transactions: Transaction[];
+  accountId: number;
+  userId: number;
 }) => {
+  const transactions = await getTransactionsData(userId, accountId, 0, 10);
   return (
     <Table>
       <TableHeader>

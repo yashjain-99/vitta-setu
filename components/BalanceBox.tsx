@@ -1,7 +1,7 @@
 import React from "react";
 import DoughnutChart from "./DoughnutChart";
 
-const BalanceBox = () => {
+const BalanceBox = ({ bankData }: { bankData: UsersBank }) => {
   return (
     <section className="flex w-full items-center gap-4 rounded-xl border border-gray-200 p-4 sm:gap-6 sm:p-6">
       <div className="flex size-full max-w-[100px] items-center sm:max-w-[120px]">
@@ -10,7 +10,7 @@ const BalanceBox = () => {
       <div className="flex flex-col w-full gap-4 sm:gap-6">
         <div className="flex justify-between">
           <div className=" text-base font-semibold text-[#101828] font-inter">
-            2 Bank Accounts
+            {bankData.numberOfAccounts} Bank Accounts
           </div>
           <div className=" text-sm font-semibold font-inter text-transparent bg-gradient-to-r from-[#0179FE] to-[#4893FF] bg-clip-text">
             Add Bank
@@ -20,7 +20,9 @@ const BalanceBox = () => {
           <div className=" text-sm font-medium font-inter text-[#475467]">
             Total current Balance
           </div>
-          <div className=" text-3xl font-semibold font-inter">$2,689</div>
+          <div className=" text-3xl font-semibold font-inter">
+            {bankData.totalBalance}
+          </div>
         </div>
       </div>
     </section>

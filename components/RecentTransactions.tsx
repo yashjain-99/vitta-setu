@@ -1,12 +1,17 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList } from "./ui/tabs";
-import TabListItem from "./TabListItem";
 import TabContentBankInfo from "./TabContentBankInfo";
-import { transactions, usersBankData } from "@/store";
 import RecentTransactionTable from "./RecentTransactionTable";
+import TabListItems from "./TabListItems";
 
-const RecentTransactions = () => {
+const RecentTransactions = ({
+  bankData,
+  userId,
+}: {
+  bankData: UsersBank;
+  userId: number;
+}) => {
   return (
     <section className="flex flex-col w-full gap-8">
       <header className="flex justify-between w-full items-center">
@@ -15,29 +20,31 @@ const RecentTransactions = () => {
         </span>
         <Button
           type="button"
+          variant={"ghost"}
           className="border rounded-lg py-2 px-4  text-[#344054] font-semibold text-sm border-[#D0D5DD]"
         >
           View all
         </Button>
       </header>
-      <Tabs defaultValue="Chase Bank" className="w-full">
+      <Tabs defaultValue={bankData.accounts[0].bankName} className="w-full">
         <TabsList className="flex flex-nowrap justify-start">
-          <TabListItem value="Chase Bank" isActive={true} />
-          <TabListItem value="Bank of America" />
-          <TabListItem value="HDFC Bank" />
+          <TabListItems accounts={bankData.accounts} />
         </TabsList>
-        <TabsContent value="Chase Bank">
-          <div className="flex flex-col gap-5">
-            <TabContentBankInfo
-              account={usersBankData[1].accounts[0] as Account}
-            />
-            <RecentTransactionTable
-              transactions={
-                [transactions[1001], transactions[1002]] as Transaction[]
-              }
-            />
-          </div>
-        </TabsContent>
+        {bankData.accounts.map((account) => {
+          return (
+            <TabsContent value={account.bankName} key={account.accountId}>
+              <Suspense fallback={<p>Loading recent transactions</p>}>
+                <div className="flex flex-col gap-5">
+                  <TabContentBankInfo account={account} />
+                  <RecentTransactionTable
+                    accountId={account.accountId}
+                    userId={userId}
+                  />
+                </div>
+              </Suspense>
+            </TabsContent>
+          );
+        })}
       </Tabs>
     </section>
   );

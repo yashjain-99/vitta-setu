@@ -1,16 +1,9 @@
 "use server";
 import { cookies } from "next/headers";
 
-export type userDetails = {
-  id?: number;
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  status: "success" | "error";
-  message?: string;
-} | null;
+type UserDetails = APIResponse<UserProfile>;
 
-export async function loggedInUserDetails(): Promise<userDetails> {
+export async function loggedInUserDetails(): Promise<UserDetails> {
   try {
     const refreshToken = cookies().get("refreshToken")?.value;
     if (refreshToken) {
@@ -25,7 +18,7 @@ export async function loggedInUserDetails(): Promise<userDetails> {
         }
       );
       const result = await res.json();
-      return { status: "success", ...result };
+      return result;
     } else {
       throw "token not found";
     }

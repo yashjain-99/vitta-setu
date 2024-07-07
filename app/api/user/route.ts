@@ -15,15 +15,10 @@ export async function GET(request: NextRequest) {
       }
     );
   }
-  const verifiedJwtResponse = await fetch(
-    `${process.env.DEV_URL}/api/validate/jwt`,
-    {
-      headers: request.headers,
-    }
-  );
-  if (!verifiedJwtResponse.ok) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
   const user = userMetaData[parseInt(userId)];
-  return NextResponse.json(user);
+  return NextResponse.json({
+    status: "success",
+    message: "Sucessfully fetched user details",
+    data: { ...user },
+  });
 }

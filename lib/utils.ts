@@ -60,11 +60,9 @@ export const authFormSchema = (type: string) =>
     pan:
       type === "login"
         ? z.string().optional()
-        : z
-            .string()
-            .regex(/^[A-Z]{5}[0-9]{4}[A-Z]$/, {
-              message: "PAN must be in the format AAAAA9999A.",
-            }),
+        : z.string().regex(/^[A-Z]{5}[0-9]{4}[A-Z]$/, {
+            message: "PAN must be in the format AAAAA9999A.",
+          }),
     password:
       type === "login"
         ? z.string()
@@ -81,3 +79,14 @@ export const authFormSchema = (type: string) =>
     // both
     email: z.string().email({ message: "Invalid email address." }),
   });
+
+export const CurrencySymbol: Record<Currency, string> = {
+  USD: "$",
+  EUR: "€",
+  GBP: "£",
+  INR: "₹",
+  JPY: "¥",
+  CNY: "¥",
+  AUD: "A$",
+  CAD: "C$",
+};

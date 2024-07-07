@@ -33,18 +33,54 @@ export const userMetaData: Record<number, UserProfile> = {
     firstName: "John",
     lastName: "Doe",
     email: "john.doe@example.com",
+    budget: [
+      {
+        category: "Food & Grocery",
+        amount: 200,
+        currency: "USD",
+      },
+      {
+        category: "Utilities",
+        amount: 150,
+        currency: "USD",
+      },
+    ],
   },
   2: {
     userId: 2,
     firstName: "Jane",
     lastName: "Smith",
     email: "jane.smith@example.com",
+    budget: [
+      {
+        category: "Shopping",
+        amount: 300,
+        currency: "USD",
+      },
+      {
+        category: "Salary",
+        amount: 5000,
+        currency: "USD",
+      },
+    ],
   },
   3: {
     userId: 3,
     firstName: "Alice",
     lastName: "Jones",
     email: "alice.jones@example.com",
+    budget: [
+      {
+        category: "Online Purchase",
+        amount: 400,
+        currency: "USD",
+      },
+      {
+        category: "Others",
+        amount: 100,
+        currency: "USD",
+      },
+    ],
   },
 };
 
@@ -71,6 +107,7 @@ export const usersBankData: Record<number, UsersBank> = {
       },
     ],
     transactionIds: [1001, 1002, 1003],
+    totalBalance: 1801.25,
   },
   2: {
     userId: 2,
@@ -85,6 +122,7 @@ export const usersBankData: Record<number, UsersBank> = {
       },
     ],
     transactionIds: [2001, 2002],
+    totalBalance: 2500.0,
   },
   3: {
     userId: 3,
@@ -113,12 +151,14 @@ export const usersBankData: Record<number, UsersBank> = {
       },
     ],
     transactionIds: [3001, 3002, 3003],
+    totalBalance: 6750.5,
   },
 };
 
 export const transactions: Record<number, Transaction> = {
   1001: {
     transactionId: 1001,
+    userId: 1, // Added userId
     accountId: 101,
     amount: 500,
     date: "2023-01-01",
@@ -128,6 +168,7 @@ export const transactions: Record<number, Transaction> = {
   },
   1002: {
     transactionId: 1002,
+    userId: 1, // Added userId
     accountId: 101,
     amount: 100,
     date: "2023-01-05",
@@ -137,6 +178,7 @@ export const transactions: Record<number, Transaction> = {
   },
   1003: {
     transactionId: 1003,
+    userId: 1, // Added userId
     accountId: 102,
     amount: 200,
     date: "2023-01-10",
@@ -146,6 +188,7 @@ export const transactions: Record<number, Transaction> = {
   },
   2001: {
     transactionId: 2001,
+    userId: 2, // Added userId
     accountId: 201,
     amount: 1500,
     date: "2023-02-01",
@@ -155,6 +198,7 @@ export const transactions: Record<number, Transaction> = {
   },
   2002: {
     transactionId: 2002,
+    userId: 2, // Added userId
     accountId: 201,
     amount: 200,
     date: "2023-02-15",
@@ -164,6 +208,7 @@ export const transactions: Record<number, Transaction> = {
   },
   3001: {
     transactionId: 3001,
+    userId: 3, // Added userId
     accountId: 301,
     amount: 1000,
     date: "2023-03-01",
@@ -173,6 +218,7 @@ export const transactions: Record<number, Transaction> = {
   },
   3002: {
     transactionId: 3002,
+    userId: 3, // Added userId
     accountId: 302,
     amount: 2500,
     date: "2023-03-05",
@@ -182,6 +228,7 @@ export const transactions: Record<number, Transaction> = {
   },
   3003: {
     transactionId: 3003,
+    userId: 3, // Added userId
     accountId: 303,
     amount: 300,
     date: "2023-03-10",

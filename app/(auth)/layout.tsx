@@ -6,7 +6,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex w-full min-h-screen justify-between font-inter max-lg:justify-center">
+    <main className="flex w-full min-h-screen">
       {children}
       <div className="flex h-screen w-full sticky top-0 items-center justify-end bg-slate-300 max-lg:hidden">
         <div>

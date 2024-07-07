@@ -6,6 +6,7 @@ declare type UserProfile = {
   phoneNumber?: string;
   address?: string;
   dateOfBirth?: string;
+  budget?: Budget[];
 };
 
 declare type UsersBank = {
@@ -13,9 +14,24 @@ declare type UsersBank = {
   numberOfAccounts: number;
   accounts: Account[];
   transactionIds: number[];
+  totalBalance: number;
 };
 
-type Currency = "USD" | "EUR" | "GBP" | "INR" | "JPY" | "CNY" | "AUD" | "CAD";
+declare type Budget = {
+  category: TransactionCategory;
+  amount: number;
+  currency: Currency;
+};
+
+declare type Currency =
+  | "USD"
+  | "EUR"
+  | "GBP"
+  | "INR"
+  | "JPY"
+  | "CNY"
+  | "AUD"
+  | "CAD";
 
 declare type Account = {
   accountId: number;
@@ -25,7 +41,7 @@ declare type Account = {
   currency: Currency;
 };
 
-type TransactionCategory =
+declare type TransactionCategory =
   | "Food & Grocery"
   | "Salary"
   | "Utilities"
@@ -37,6 +53,7 @@ type TransactionCategory =
 
 declare type Transaction = {
   transactionId: number;
+  userId: number;
   accountId: number;
   amount: number;
   date: string;
@@ -65,4 +82,10 @@ declare interface HeaderBoxProps {
 declare interface TabListItemProps {
   value: string;
   isActive?: boolean;
+}
+
+declare interface APIResponse<T> {
+  status: "success" | "error";
+  message: string;
+  data?: T;
 }
