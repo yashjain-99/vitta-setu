@@ -7,8 +7,8 @@ import SearchBox from "@/components/SearchBox";
 
 const Sidebar = () => {
   return (
-    <section className=" bg-[#F3F9FF] min-h-screen h-full max-w-64 flex flex-col gap-6 pt-8">
-      <header className=" px-5">
+    <section className="bg-[#F3F9FF] min-h-screen h-full w-64 flex flex-col gap-6 pt-8">
+      <header className="px-5">
         <BrandHeader />
       </header>
       <div className="px-5 max-h-11 relative">

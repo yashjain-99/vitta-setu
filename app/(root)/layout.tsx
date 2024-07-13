@@ -6,9 +6,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex w-full min-h-screen">
+    <main className="grid grid-cols-[auto_1fr] min-h-screen">
       <Sidebar />
-      <div className="flex-grow overflow-y-auto">{children}</div>
+      <div className="overflow-y-auto">{children}</div>
     </main>
   );
 }
