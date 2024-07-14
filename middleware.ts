@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-
   if (["/api/login", "/api/validate/jwt"].includes(pathname)) {
     return NextResponse.next();
   }
@@ -33,5 +32,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/api/:path*"],
+  matcher: ["/api/:path*", "/", "/my-banks", "/transaction-history"],
 };

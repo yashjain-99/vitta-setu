@@ -1,5 +1,5 @@
 import { getAccountData } from "@/lib/actions/account";
-import React, { Suspense } from "react";
+import React from "react";
 import BalanceBox from "./BalanceBox";
 import RecentTransactions from "./RecentTransactions";
 

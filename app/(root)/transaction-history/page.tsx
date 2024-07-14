@@ -1,4 +1,3 @@
-import HeaderBox from "@/components/HeaderBox";
 import {
   Select,
   SelectContent,
@@ -6,7 +5,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import { IoFilterOutline } from "react-icons/io5";
 import {
   Pagination,
@@ -18,18 +16,10 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
+import HeaderBox from "@/components/HeaderBox";
 import RecentTransactionTable from "@/components/RecentTransactionTable";
-
-const SelectAccountPlaceholder = () => {
-  return (
-    <div className="flex flex-row gap-1 items-center">
-      <MdOutlineAccountBalanceWallet color="blue" className=" w-6 h-6" />
-      <span className="text-sm font-medium font-inter text-[#344054]">
-        Select Account
-      </span>
-    </div>
-  );
-};
+import BankSelector from "@/components/BankSelector";
+import Spinner from "@/components/Spinner";
 
 const SelectFilterPlaceholder = () => {
   return (
@@ -42,7 +32,12 @@ const SelectFilterPlaceholder = () => {
   );
 };
 
-const TransactionHistory = () => {
+const TransactionHistory = ({
+  searchParams: { id, page },
+}: {
+  searchParams: { id: number; page: number };
+}) => {
+  console.log(id, page);
   return (
     <section className="flex flex-col pt-12 pb-8 px-8 gap-8">
       <div className="flex flex-row justify-between items-center">
@@ -50,25 +45,7 @@ const TransactionHistory = () => {
           title="Transaction history"
           subtext="Gain insight and track your transactions over time"
         />
-        <div>
-          <Select>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder={<SelectAccountPlaceholder />} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="bankA">
-                <span className="text-sm font-medium font-inter text-[#344054]">
-                  Bank A
-                </span>
-              </SelectItem>
-              <SelectItem value="bankB">
-                <span className="text-sm font-medium font-inter text-[#344054]">
-                  Bank B
-                </span>
-              </SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+        <BankSelector />
       </div>
       <div className=" p-6 bg-[#1570EF] border rounded-xl flex flex-row justify-between items-center shadow-md">
         <div className="flex flex-col gap-4 text-white">
