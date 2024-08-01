@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList } from "./ui/tabs";
 import TabContentBankInfo from "./TabContentBankInfo";
 import RecentTransactionTable from "./RecentTransactionTable";
 import TabListItems from "./TabListItems";
+import Link from "next/link";
 
 const RecentTransactions = ({
   bankData,
@@ -18,13 +19,15 @@ const RecentTransactions = ({
         <span className="text-[#101828] text-2xl font-inter font-semibold">
           Recent Transactions
         </span>
-        <Button
-          type="button"
-          variant={"ghost"}
-          className="border rounded-lg py-2 px-4  text-[#344054] font-semibold text-sm border-[#D0D5DD]"
-        >
-          View all
-        </Button>
+        <Link href={"/transaction-history"}>
+          <Button
+            type="button"
+            variant={"ghost"}
+            className="border rounded-lg py-2 px-4  text-[#344054] font-semibold text-sm border-[#D0D5DD]"
+          >
+            View all
+          </Button>
+        </Link>
       </header>
       <Tabs defaultValue={bankData.accounts[0].bankName} className="w-full">
         <TabsList className="flex flex-nowrap justify-start">
@@ -39,6 +42,7 @@ const RecentTransactions = ({
                   <RecentTransactionTable
                     accountId={account.accountId}
                     userId={userId}
+                    count={5}
                   />
                 </div>
               </Suspense>

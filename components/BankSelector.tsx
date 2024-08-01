@@ -1,6 +1,6 @@
 import React from "react";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
-import { loggedInUserDetails } from "@/lib/actions/user";
+import { loggedInUserId } from "@/lib/actions/user";
 import { getAccountData } from "@/lib/actions/account";
 import { redirect } from "next/navigation";
 import CustomSelector from "./CustomSelector";
@@ -15,11 +15,11 @@ const SelectAccountPlaceholder = () => (
 );
 
 const fetchBankData = async () => {
-  const userDetails = await loggedInUserDetails();
-  if (!userDetails || !userDetails.data || userDetails?.status === "error") {
+  const userId = await loggedInUserId();
+  if (!userId) {
     redirect("/login");
   }
-  const bankData = await getAccountData(userDetails.data.userId);
+  const bankData = await getAccountData(userId);
   return bankData.accounts.map((account) => ({
     id: account.accountId,
     value: account.bankName,

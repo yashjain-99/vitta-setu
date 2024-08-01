@@ -13,8 +13,8 @@ declare type UsersBank = {
   userId: number;
   numberOfAccounts: number;
   accounts: Account[];
-  transactionIds: number[];
   totalBalance: number;
+  accountTransactionIds: { [accountId: number]: number[] };
 };
 
 declare type Budget = {
@@ -70,6 +70,11 @@ declare interface SidebarFieldItem {
   label: string;
   icon: React.ReactNode;
   route: string;
+}
+
+declare interface FilterOptionItem {
+  id: number;
+  value: string;
 }
 
 declare interface HeaderBoxProps {

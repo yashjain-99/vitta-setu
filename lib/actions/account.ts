@@ -11,21 +11,17 @@ export const getTransactionsData = async (
   start: number,
   count: number
 ) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const accountData = await getAccountData(userId);
+  const transactionIds = accountData.accountTransactionIds[accountId];
+  const total = transactionIds.length;
+  const filteredTransactionIds = transactionIds.slice(start, start + count);
+  const filteredTransactions: Transaction[] = filteredTransactionIds.map(
+    (transactionId) => transactions[transactionId]
+  );
+  const res = {
+    transactions: filteredTransactions,
+    total,
+  };
 
-  const filteredTransactions: Transaction[] = Object.values(
-    transactions
-  ).reduce((result: Transaction[], transaction) => {
-    if (
-      transaction.userId === userId &&
-      transaction.accountId === accountId &&
-      start-- <= 0 &&
-      count-- > 0
-    ) {
-      result.push(transaction);
-    }
-    return result;
-  }, []);
-
-  return filteredTransactions;
+  return res;
 };

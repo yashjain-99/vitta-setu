@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
     const token = req.headers.get("authorization")?.split(" ")[1]; // Extract token from Authorization header
     if (!token) {
       return NextResponse.json(

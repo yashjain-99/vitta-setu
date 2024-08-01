@@ -17,7 +17,7 @@ interface Item {
 }
 
 interface CustomSelectorProps {
-  items: Item[];
+  items: readonly Item[];
   placeholder: React.ReactNode;
   queryParamKey: string;
 }
@@ -51,13 +51,16 @@ const CustomSelector = ({
           value: accountId,
         });
         router.push(newUrl, { scroll: false });
-      }, 300),
-    [searchParams, router]
+      }, 100),
+    [searchParams, router, queryParamKey]
   );
 
   return (
     <div>
-      <Select onValueChange={(accountId) => handleAccountChange(accountId)}>
+      <Select
+        onValueChange={(accountId) => handleAccountChange(accountId)}
+        defaultValue={searchParams.get(queryParamKey)?.toString()}
+      >
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>

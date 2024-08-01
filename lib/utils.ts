@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { z } from "zod";
 
 import qs from "query-string";
+import { PAGINATION_DEFAULT } from "@/constants";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -112,3 +113,7 @@ export function formUrlQuery({ params, key, value }: UrlQueryParams) {
     { skipNull: true }
   );
 }
+
+export const calculatePageFromStart = (start: number): number => {
+  return Math.ceil(start / PAGINATION_DEFAULT.count);
+};

@@ -3,6 +3,15 @@ import { cookies } from "next/headers";
 
 type UserDetails = APIResponse<UserProfile>;
 
+export async function loggedInUserId(): Promise<number | null> {
+  const refreshToken = cookies().get("refreshToken")?.value;
+  if (refreshToken) {
+    const { userId } = JSON.parse(atob(refreshToken.split(".")[1]));
+    return userId;
+  }
+  return null;
+}
+
 export async function loggedInUserDetails(): Promise<UserDetails> {
   try {
     const refreshToken = cookies().get("refreshToken")?.value;

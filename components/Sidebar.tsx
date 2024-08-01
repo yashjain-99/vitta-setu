@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SidebarFields } from "@/constants";
+import { SIDEBAR_FIELDS } from "@/constants";
 import { SidebarItem } from "@/components/SidebarItem";
 import BrandHeader from "@/components/BrandHeader";
 import SearchBox from "@/components/SearchBox";
@@ -15,7 +15,7 @@ const Sidebar = () => {
         <SearchBox />
       </div>
       <nav className="flex flex-col gap-1 px-4">
-        {SidebarFields.map((item) => {
+        {SIDEBAR_FIELDS.map((item) => {
           return <SidebarItem key={item.label} item={item} />;
         })}
       </nav>

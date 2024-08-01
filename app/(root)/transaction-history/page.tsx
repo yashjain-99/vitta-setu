@@ -1,25 +1,11 @@
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { IoFilterOutline } from "react-icons/io5";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
 
 import HeaderBox from "@/components/HeaderBox";
 import RecentTransactionTable from "@/components/RecentTransactionTable";
 import BankSelector from "@/components/BankSelector";
-import Spinner from "@/components/Spinner";
+import AccountInfoBanner from "@/components/AccountInfoBanner";
+import CustomSelector from "@/components/CustomSelector";
+import { FILTER_OPTIONS } from "@/constants";
 
 const SelectFilterPlaceholder = () => {
   return (
@@ -33,11 +19,10 @@ const SelectFilterPlaceholder = () => {
 };
 
 const TransactionHistory = ({
-  searchParams: { id, page },
+  searchParams: { id, start, filterId },
 }: {
-  searchParams: { id: number; page: number };
+  searchParams: { id: string; start: string; filterId: string };
 }) => {
-  console.log(id, page);
   return (
     <section className="flex flex-col pt-12 pb-8 px-8 gap-8">
       <div className="flex flex-row justify-between items-center">
@@ -47,91 +32,29 @@ const TransactionHistory = ({
         />
         <BankSelector />
       </div>
-      <div className=" p-6 bg-[#1570EF] border rounded-xl flex flex-row justify-between items-center shadow-md">
-        <div className="flex flex-col gap-4 text-white">
-          <div className="flex flex-col gap-2">
-            <span className=" text-[#FFFFFF] text-2xl font-bold font-inter">
-              Chase Bank
+      {id && <AccountInfoBanner accountId={parseInt(id)} />}
+      {id && (
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-row justify-between items-center">
+            <span className="text-lg font-semibold text-[#101828] font-inter">
+              Transaction History
             </span>
-            <span className=" text-[#FFFFFF] text-base font-normal font-inter">
-              Saving Account
-            </span>
+            {/* TODO: Use Dropdown checkbox */}
+            <CustomSelector
+              items={FILTER_OPTIONS}
+              placeholder={<SelectFilterPlaceholder />}
+              queryParamKey="filterId"
+            />
           </div>
-          <span className=" text-[#FFFFFF] text-sm font-normal font-inter">
-            ●●●● ●●●● ●●●● 9999
-          </span>
+          <div>
+            <RecentTransactionTable
+              accountId={parseInt(id)}
+              showComplete={true}
+              start={start ? parseInt(start) : 0}
+            />
+          </div>
         </div>
-        <div className=" p-4 border rounded-lg bg-[#FFFFFF4D] border-[#FFFFFF80] flex flex-col gap-1">
-          <span className=" text-[#FFFFFF] text-sm font-inter font-medium">
-            Current Balance
-          </span>
-          <span className=" text-[#FFFFFF] text-2xl font-inter font-semibold">
-            $41,382.80
-          </span>
-        </div>
-      </div>
-      <div className="flex flex-col gap-6">
-        <div className="flex flex-row justify-between items-center">
-          <span className="text-lg font-semibold text-[#101828] font-inter">
-            Transaction History
-          </span>
-          <Select>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder={<SelectFilterPlaceholder />} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="bankA">
-                <span className="text-sm font-medium font-inter text-[#344054]">
-                  Bank A
-                </span>
-              </SelectItem>
-              <SelectItem value="bankB">
-                <span className="text-sm font-medium font-inter text-[#344054]">
-                  Bank B
-                </span>
-              </SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <div>
-          <RecentTransactionTable accountId={101} userId={1} />
-        </div>
-      </div>
-      <footer className=" border-t border-[#EAECF0] px-4">
-        <Pagination>
-          <PaginationContent className=" w-full justify-between">
-            <PaginationItem>
-              <PaginationPrevious href="#" />
-            </PaginationItem>
-            <div className="flex justify-center items-center">
-              <PaginationItem>
-                <PaginationLink href="#">1</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">2</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">3</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">8</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">9</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">10</PaginationLink>
-              </PaginationItem>
-            </div>
-            <PaginationItem>
-              <PaginationNext href="#" />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-      </footer>
+      )}
     </section>
   );
 };
