@@ -20,6 +20,7 @@ export const getTransactionsData = async (
   );
   const res = {
     transactions: filteredTransactions,
+    currency: accountData.currency,
     total,
   };
 

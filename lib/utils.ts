@@ -83,17 +83,6 @@ export const authFormSchema = (type: string) =>
     email: z.string().email({ message: "Invalid email address." }),
   });
 
-export const CurrencySymbol: Record<Currency, string> = {
-  USD: "$",
-  EUR: "€",
-  GBP: "£",
-  INR: "₹",
-  JPY: "¥",
-  CNY: "¥",
-  AUD: "A$",
-  CAD: "C$",
-};
-
 interface UrlQueryParams {
   params: string;
   key: string;

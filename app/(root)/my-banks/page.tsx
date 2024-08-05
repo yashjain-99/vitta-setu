@@ -1,3 +1,4 @@
+import Cards from "@/components/Cards";
 import HeaderBox from "@/components/HeaderBox";
 import { Button } from "@/components/ui/button";
 import React from "react";
@@ -27,12 +28,7 @@ const MyBanks = () => {
           Your cards
         </span>
         <div className="flex flex-wrap flex-row gap-8">
-          <div className="h-40 w-64 rounded-3xl border bg-gradient-to-r from-[#eeaeca] to-[#94bbe9] z-10"></div>
-          <div className="h-40 w-64 rounded-3xl border bg-gradient-to-r from-[#1d2ee3] to-[#aed0ee]"></div>
-          <div className="h-40 w-64 rounded-3xl border bg-gradient-to-r from-[#eeaeca] to-[#94bbe9] z-10"></div>
-          <div className="h-40 w-64 rounded-3xl border bg-gradient-to-r from-[#1d2ee3] to-[#aed0ee]"></div>
-          <div className="h-40 w-64 rounded-3xl border bg-gradient-to-r from-[#eeaeca] to-[#94bbe9] z-10"></div>
-          <div className="h-40 w-64 rounded-3xl border bg-gradient-to-r from-[#1d2ee3] to-[#aed0ee]"></div>
+          <Cards />
         </div>
       </div>
     </section>

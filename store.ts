@@ -96,16 +96,15 @@ export const usersBankData: Record<number, UsersBank> = {
         availableBalance: 1500.75,
         bankName: "Bank A",
         type: "saving",
-        currency: "USD",
       },
       {
         accountId: 102,
         availableBalance: 300.5,
         bankName: "Bank B",
         type: "current",
-        currency: "USD",
       },
     ],
+    currency: "USD",
     totalBalance: 1801.25,
     accountTransactionIds: {
       101: [
@@ -128,9 +127,9 @@ export const usersBankData: Record<number, UsersBank> = {
         availableBalance: 2500.0,
         bankName: "Bank C",
         type: "saving",
-        currency: "EUR",
       },
     ],
+    currency: "EUR",
     totalBalance: 2500.0,
     accountTransactionIds: {
       201: [2001, 2002],
@@ -146,23 +145,21 @@ export const usersBankData: Record<number, UsersBank> = {
         availableBalance: 1000.0,
         bankName: "Bank D",
         type: "current",
-        currency: "GBP",
       },
       {
         accountId: 302,
         availableBalance: 5000.0,
         bankName: "Bank E",
         type: "over-draft",
-        currency: "GBP",
       },
       {
         accountId: 303,
         availableBalance: 750.5,
         bankName: "Bank F",
         type: "cash-credit",
-        currency: "GBP",
       },
     ],
+    currency: "GBP",
     totalBalance: 6750.5,
     accountTransactionIds: {
       301: [3001],

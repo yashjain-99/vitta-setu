@@ -2,6 +2,8 @@ import { getAccountData } from "@/lib/actions/account";
 import { loggedInUserId } from "@/lib/actions/user";
 import { redirect } from "next/navigation";
 import React, { Suspense } from "react";
+import CustomCountUp from "./CustomCountUp";
+import { CURRENCY_SYMBOL } from "@/constants";
 
 const AccountInfoBannerContent = async ({
   accountId,
@@ -38,7 +40,11 @@ const AccountInfoBannerContent = async ({
           Current Balance
         </span>
         <span className=" text-[#FFFFFF] text-2xl font-inter font-semibold">
-          {selectedAccountData?.availableBalance}
+          {CURRENCY_SYMBOL[userBankData.currency]}
+          <CustomCountUp
+            value={selectedAccountData?.availableBalance as number}
+            duration={1}
+          />
         </span>
       </div>
     </>

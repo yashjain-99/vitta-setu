@@ -1,4 +1,6 @@
 "use client";
+
+// TODO: Add passkey check for showing private info
 import { CARD_TYPE } from "@/constants";
 import { formatCardNumber, getCardType } from "@/lib/utils";
 import React, { useState } from "react";

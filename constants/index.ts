@@ -71,3 +71,14 @@ export enum CARD_TYPE {
   RUPAY = "RuPay",
   OTHER = "Other",
 }
+
+export const CURRENCY_SYMBOL: Record<Currency, string> = Object.freeze({
+  USD: "$",
+  EUR: "€",
+  GBP: "£",
+  INR: "₹",
+  JPY: "¥",
+  CNY: "¥",
+  AUD: "A$",
+  CAD: "C$",
+});

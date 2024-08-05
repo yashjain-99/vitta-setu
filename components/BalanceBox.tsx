@@ -1,5 +1,7 @@
 import React from "react";
 import DoughnutChart from "./DoughnutChart";
+import { CURRENCY_SYMBOL } from "@/constants";
+import CustomCountUp from "./CustomCountUp";
 
 const BalanceBox = ({ bankData }: { bankData: UsersBank }) => {
   return (
@@ -21,7 +23,8 @@ const BalanceBox = ({ bankData }: { bankData: UsersBank }) => {
             Total current Balance
           </div>
           <div className=" text-3xl font-semibold font-inter">
-            {bankData.totalBalance}
+            {CURRENCY_SYMBOL[bankData.currency]}
+            <CustomCountUp value={bankData.totalBalance} duration={1} />
           </div>
         </div>
       </div>

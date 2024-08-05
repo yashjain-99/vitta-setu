@@ -7,7 +7,7 @@ const Cards = async ({
   isOverLapping = false,
   upperLimit,
 }: {
-  isOverLapping: boolean;
+  isOverLapping?: boolean;
   upperLimit?: number;
 }) => {
   const userId = await loggedInUserId();

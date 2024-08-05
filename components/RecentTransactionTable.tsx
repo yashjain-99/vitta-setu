@@ -10,7 +10,7 @@ import {
 } from "./ui/table";
 import { getTransactionsData } from "@/lib/actions/account";
 import { loggedInUserId } from "@/lib/actions/user";
-import { PAGINATION_DEFAULT } from "@/constants";
+import { CURRENCY_SYMBOL, PAGINATION_DEFAULT } from "@/constants";
 import CustomPagination from "./CustomPagination";
 
 const RecentTransactionTable = async ({
@@ -36,7 +36,7 @@ const RecentTransactionTable = async ({
     start ?? PAGINATION_DEFAULT.start,
     count ?? PAGINATION_DEFAULT.count
   );
-  const { transactions, total } = transactionsRes;
+  const { transactions, total, currency } = transactionsRes;
   return (
     <Table>
       <TableHeader>
@@ -57,7 +57,10 @@ const RecentTransactionTable = async ({
             <TableCell>{transaction.date}</TableCell>
             {showComplete && <TableCell>{transaction.category}</TableCell>}
             {showComplete && <TableCell>{transaction.description}</TableCell>}
-            <TableCell className="text-right">{transaction.amount}</TableCell>
+            <TableCell className="text-right font-semibold">
+              {CURRENCY_SYMBOL[currency]}
+              {transaction.amount}
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

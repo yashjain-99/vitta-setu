@@ -16,6 +16,7 @@ declare type UsersBank = {
   totalBalance: number;
   accountTransactionIds: { [accountId: number]: number[] };
   cardIds: number[];
+  currency: Currency;
 };
 
 declare type UserCard = {
@@ -49,7 +50,6 @@ declare type Account = {
   availableBalance: number;
   bankName: string;
   type: "saving" | "current" | "over-draft" | "cash-credit";
-  currency: Currency;
 };
 
 declare type TransactionCategory =
