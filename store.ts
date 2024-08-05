@@ -117,6 +117,7 @@ export const usersBankData: Record<number, UsersBank> = {
         1028,
       ],
     },
+    cardIds: [1, 2],
   },
   2: {
     userId: 2,
@@ -134,6 +135,7 @@ export const usersBankData: Record<number, UsersBank> = {
     accountTransactionIds: {
       201: [2001, 2002],
     },
+    cardIds: [3, 4],
   },
   3: {
     userId: 3,
@@ -167,6 +169,7 @@ export const usersBankData: Record<number, UsersBank> = {
       302: [3002],
       303: [3003],
     },
+    cardIds: [5, 6],
   },
 };
 
@@ -512,3 +515,60 @@ export const transactions: Record<number, Transaction> = {
     description: "Purchase from Amazon",
   },
 };
+
+export const userCards: UserCard[] = [
+  {
+    cardId: 1,
+    userId: 1,
+    cardNumber: "4111111111111111",
+    bankName: "Bank A",
+    cardHolderName: "John Doe",
+    expirationDate: "12/25",
+    cvv: "123",
+  },
+  {
+    cardId: 2,
+    userId: 1,
+    cardNumber: "4222222222222222",
+    bankName: "Bank B",
+    cardHolderName: "John Doe",
+    expirationDate: "01/26",
+    cvv: "124",
+  },
+  {
+    cardId: 3,
+    userId: 2,
+    cardNumber: "5500000000000004",
+    bankName: "Bank C",
+    cardHolderName: "Jane Smith",
+    expirationDate: "11/24",
+    cvv: "456",
+  },
+  {
+    cardId: 4,
+    userId: 2,
+    cardNumber: "5555555555554444",
+    bankName: "Bank D",
+    cardHolderName: "Jane Smith",
+    expirationDate: "09/27",
+    cvv: "457",
+  },
+  {
+    cardId: 5,
+    userId: 3,
+    cardNumber: "340000000000009",
+    bankName: "Bank E",
+    cardHolderName: "Alice Jones",
+    expirationDate: "10/26",
+    cvv: "789",
+  },
+  {
+    cardId: 6,
+    userId: 3,
+    cardNumber: "378282246310005",
+    bankName: "Bank F",
+    cardHolderName: "Alice Jones",
+    expirationDate: "03/28",
+    cvv: "790",
+  },
+];

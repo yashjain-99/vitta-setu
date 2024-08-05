@@ -4,6 +4,8 @@ import { Progress } from "@/components/ui/progress";
 
 import HeaderBox from "./HeaderBox";
 import { calculateBudgetInfo } from "@/lib/actions/budget";
+import Card from "./Card";
+import Cards from "./Cards";
 
 const RightSidebar = async ({ userDetails }: { userDetails: UserProfile }) => {
   const budgetData = await calculateBudgetInfo(userDetails);
@@ -25,8 +27,7 @@ const RightSidebar = async ({ userDetails }: { userDetails: UserProfile }) => {
             </span>
           </div>
           <div className="relative h-48 w-80">
-            <div className="absolute top-0 left-0 h-40 w-64 rounded-3xl border bg-gradient-to-r from-[#eeaeca] to-[#94bbe9] z-10"></div>
-            <div className="absolute bottom-0 right-0 h-40 w-64 rounded-3xl border bg-gradient-to-r from-[#1d2ee3] to-[#aed0ee]"></div>
+            <Cards isOverLapping={true} upperLimit={2} />
           </div>
         </div>
         <div className="flex flex-col gap-6 w-full">

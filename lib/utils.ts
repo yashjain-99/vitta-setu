@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { z } from "zod";
 
 import qs from "query-string";
-import { PAGINATION_DEFAULT } from "@/constants";
+import { CARD_TYPE, PAGINATION_DEFAULT } from "@/constants";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -116,4 +116,23 @@ export function formUrlQuery({ params, key, value }: UrlQueryParams) {
 
 export const calculatePageFromStart = (start: number): number => {
   return Math.ceil(start / PAGINATION_DEFAULT.count);
+};
+
+export const getCardType = (cardNumber: string): CARD_TYPE => {
+  if (/^4/.test(cardNumber)) {
+    return CARD_TYPE.VISA;
+  } else if (
+    /^5[1-5]/.test(cardNumber) ||
+    /^2(22[1-9]|2[3-9][0-9]|[3-6][0-9]{2}|7([01][0-9]|20))/.test(cardNumber)
+  ) {
+    return CARD_TYPE.MASTERCARD;
+  } else if (/^(60|65|81|82)/.test(cardNumber)) {
+    return CARD_TYPE.RUPAY;
+  } else {
+    return CARD_TYPE.OTHER;
+  }
+};
+
+export const formatCardNumber = (cardNumber: string): string => {
+  return cardNumber.match(/.{1,4}/g)?.join(" ") ?? "";
 };

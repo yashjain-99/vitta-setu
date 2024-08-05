@@ -15,6 +15,17 @@ declare type UsersBank = {
   accounts: Account[];
   totalBalance: number;
   accountTransactionIds: { [accountId: number]: number[] };
+  cardIds: number[];
+};
+
+declare type UserCard = {
+  userId: number;
+  cardId: number;
+  cardNumber: string;
+  bankName: string;
+  cardHolderName: string;
+  expirationDate: string;
+  cvv: string;
 };
 
 declare type Budget = {

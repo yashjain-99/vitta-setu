@@ -64,3 +64,10 @@ export const PAGINATION_DEFAULT = Object.freeze({
   start: 0,
   count: 10,
 });
+
+export enum CARD_TYPE {
+  VISA = "Visa",
+  MASTERCARD = "MasterCard",
+  RUPAY = "RuPay",
+  OTHER = "Other",
+}
