@@ -15,11 +15,9 @@ const AccountInfoBannerContent = async ({
     redirect("/login");
   }
   const userBankData = await getAccountData(userId);
-  const selectedAccountData = userBankData.accounts.map((accountData) => {
-    if (accountData.accountId == accountId) {
-      return accountData;
-    }
-  })[0];
+  const selectedAccountData = userBankData.accounts.filter(
+    (accountData) => accountData.accountId == accountId
+  )[0];
   return (
     <>
       <div className="flex flex-col gap-4 text-white">
