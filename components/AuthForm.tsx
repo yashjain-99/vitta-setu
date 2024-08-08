@@ -37,6 +37,12 @@ const AuthForm = ({ type }: AuthFormProps) => {
     null
   );
 
+  const fillDummyCredentials = () => {
+    form.setValue("email", "john.doe@example.com");
+    form.setValue("password", "password123");
+    form.trigger();
+  };
+
   useEffect(() => {
     if (!state) {
       return;
@@ -159,6 +165,18 @@ const AuthForm = ({ type }: AuthFormProps) => {
           </>
         )}
       </footer>
+      {type === "login" && (
+        <div className=" border bg-gray-200 p-2">
+          Click{" "}
+          <span
+            onClick={fillDummyCredentials}
+            className="text-[#0179FE] cursor-pointer"
+          >
+            here
+          </span>{" "}
+          to fill dummy email and password
+        </div>
+      )}
     </section>
   );
 };
