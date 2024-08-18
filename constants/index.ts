@@ -1,26 +1,24 @@
-import { AiFillHome } from "react-icons/ai";
-import { FaUniversity, FaHistory, FaMoneyCheckAlt } from "react-icons/fa"; // import additional icons
 import React from "react";
 
 export const SIDEBAR_FIELDS: SidebarFieldItem[] = [
   {
     label: "Home",
-    icon: React.createElement(AiFillHome),
+    icon: React.createElement(require("react-icons/ai").AiFillHome),
     route: "/",
   },
   {
     label: "My banks",
-    icon: React.createElement(FaUniversity),
+    icon: React.createElement(require("react-icons/fa").FaUniversity),
     route: "/my-banks",
   },
   {
     label: "Transaction History",
-    icon: React.createElement(FaHistory),
+    icon: React.createElement(require("react-icons/fa").FaHistory),
     route: "/transaction-history",
   },
   {
     label: "Payment transfer",
-    icon: React.createElement(FaMoneyCheckAlt),
+    icon: React.createElement(require("react-icons/fa").FaMoneyCheckAlt),
     route: "/payment-transfer",
   },
 ];

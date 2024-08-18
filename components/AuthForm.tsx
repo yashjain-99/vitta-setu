@@ -55,7 +55,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
     if (state.status === "error") {
       form.trigger();
     }
-  }, [state, form]);
+  }, [state, form, router]);
 
   return (
     <section className="flex lg:min-h-screen max-w-[460px] flex-col justify-center gap-5 p-10 md:gap-8 max-lg:border max-lg:rounded-md max-lg:border-gray-300">

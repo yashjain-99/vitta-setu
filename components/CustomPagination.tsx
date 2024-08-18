@@ -53,7 +53,7 @@ const CustomPagination = ({
         });
         router.push(newUrl, { scroll: false });
       }, 100),
-    [searchParams, router]
+    [searchParams, router, start, totalPages]
   );
   return (
     <div className="flex items-center space-x-6 lg:space-x-8 justify-end">
