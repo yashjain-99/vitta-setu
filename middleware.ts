@@ -15,7 +15,7 @@ export async function middleware(request: NextRequest) {
   }
 
   const verifiedJwtResponse = await fetch(
-    `${process.env.DEV_URL}/api/validate/jwt`,
+    `${process.env.URL}/api/validate/jwt`,
     {
       headers: {
         "Content-Type": "application/json",

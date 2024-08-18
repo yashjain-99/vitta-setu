@@ -23,7 +23,7 @@ export async function dummyAuthAction(
     // Simulate some kind of data processing like persisting data
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    const res = await fetch(`${process.env.DEV_URL}/api/login`, {
+    const res = await fetch(`${process.env.URL}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Corrected Content-Type header

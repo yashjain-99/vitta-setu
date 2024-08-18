@@ -17,15 +17,12 @@ export async function loggedInUserDetails(): Promise<UserDetails> {
     const refreshToken = cookies().get("refreshToken")?.value;
     if (refreshToken) {
       const { userId } = JSON.parse(atob(refreshToken.split(".")[1]));
-      const res = await fetch(
-        `${process.env.DEV_URL}/api/user?userId=${userId}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${refreshToken}`,
-          },
-        }
-      );
+      const res = await fetch(`${process.env.URL}/api/user?userId=${userId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${refreshToken}`,
+        },
+      });
       const result = await res.json();
       return result;
     } else {
