@@ -1,7 +1,7 @@
 # Vitta-Setu
 ## _An Account aggregator FE NextJS webapp_
 
-Vitta-Setu is a comprehensive banking web application that offers users a seamless platform to manage their financial accounts, track transactions, set budgets, and monitor their financial health. With a modern interface and a focus on user experience, Vitta-Setu ensures that users can easily navigate through their banking needs.
+Vitta-Setu is an account aggregator FE web application that offers users a seamless platform to manage their financial accounts, track transactions, set budgets, and monitor their financial health. With a modern interface and a focus on user experience, Vitta-Setu ensures that users can easily navigate through their banking needs.
 
 ## ✨Features✨
 
