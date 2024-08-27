@@ -24,7 +24,8 @@ export const SidebarItem = ({ item }: SidebarItemProps) => {
         }
       )}
     >
-      {item.icon} {item.label}
+      <span>{item.icon}</span>
+      <span className=" hidden lg:block">{item.label}</span>
     </Link>
   );
 };

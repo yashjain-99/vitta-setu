@@ -58,7 +58,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
   }, [state, form, router]);
 
   return (
-    <section className="flex lg:min-h-screen max-w-[460px] flex-col justify-center gap-5 p-10 md:gap-8 max-lg:border max-lg:rounded-md max-lg:border-gray-300">
+    <section className="flex lg:min-h-dvh max-w-[460px] flex-col justify-center gap-5 p-10 md:gap-8 max-lg:border max-lg:rounded-md max-lg:border-gray-300">
       <header className="flex flex-col gap-5 md:gap-8">
         <BrandHeader />
 

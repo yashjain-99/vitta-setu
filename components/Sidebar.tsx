@@ -7,13 +7,10 @@ import SearchBox from "@/components/SearchBox";
 
 const Sidebar = () => {
   return (
-    <section className="bg-[#F3F9FF] min-h-screen h-full w-64 flex flex-col gap-6 pt-8">
+    <section className="bg-[#F3F9FF] min-h-dvh h-full flex flex-col gap-6 pt-8 items-center lg:items-start">
       <header className="px-5">
         <BrandHeader />
       </header>
-      <div className="px-5 max-h-11 relative">
-        <SearchBox />
-      </div>
       <nav className="flex flex-col gap-1 px-4">
         {SIDEBAR_FIELDS.map((item) => {
           return <SidebarItem key={item.label} item={item} />;

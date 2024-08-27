@@ -6,9 +6,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="flex w-full min-h-screen">
+    <main className="flex w-full min-h-dvh">
       {children}
-      <div className="flex h-screen w-full sticky top-0 items-center justify-end bg-slate-300 max-lg:hidden">
+      <div className="flex h-dvh w-full sticky top-0 items-center justify-end bg-slate-300 max-lg:hidden">
         <div>
           <Image
             src="/assets/img/auth-bg.jpg"

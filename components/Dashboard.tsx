@@ -14,16 +14,14 @@ const Dashboard = async () => {
     redirect("/login");
   }
   return (
-    <section className="flex w-full max-h-screen overflow-y-auto">
-      <div className="flex flex-1 flex-col gap-8 px-5 sm:px-8 py-7 lg:py-12 max-h-screen">
-        <div className=" px-8">
-          <HeaderBox
-            type="greeting"
-            title="Welcome,"
-            user={userDetails.data.firstName}
-            subtext="Access & manage your account and transactions efficiently."
-          />
-        </div>
+    <section className="flex flex-col lg:flex-row w-full max-h-dvh overflow-y-auto gap-6 lg:gap-0">
+      <div className="flex flex-1 flex-col gap-8 px-5 sm:px-8 py-7 lg:py-12 max-h-dvh">
+        <HeaderBox
+          type="greeting"
+          title="Welcome,"
+          user={userDetails.data.firstName}
+          subtext="Access & manage your account and transactions efficiently."
+        />
         <Suspense fallback={<p>Loading overview...</p>}>
           <DashboardOverview userId={userDetails.data.userId} />
         </Suspense>

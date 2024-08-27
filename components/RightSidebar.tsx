@@ -4,18 +4,18 @@ import { Progress } from "@/components/ui/progress";
 
 import HeaderBox from "./HeaderBox";
 import { calculateBudgetInfo } from "@/lib/actions/budget";
-import Card from "./Card";
 import Cards from "./Cards";
 
 const RightSidebar = async ({ userDetails }: { userDetails: UserProfile }) => {
   const budgetData = await calculateBudgetInfo(userDetails);
   return (
-    <section className="sticky top-0 bg-[#FFFFFF] border-l-2 border-[#EAECF0] min-h-screen h-full  gap-6">
-      <div className="bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] w-full h-14 lg:h-20 absolute top-0 left-0"></div>
+    <section className="lg:sticky lg:top-0 lg:bg-[#FFFFFF] lg:border-l-2 lg:border-[#EAECF0] lg:min-h-dvh h-full  gap-6">
+      <div className="bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] w-full h-14 lg:h-20 absolute top-0 left-0 hidden lg:block"></div>
       <div className="flex flex-col z-10 gap-8 px-5 sm:px-8 sm:pt-24 pt-16 pb-7">
         <HeaderBox
           title={`${userDetails.firstName} ${userDetails.lastName}`}
           subtext={userDetails.email}
+          className="hidden lg:block"
         />
         <div className="flex flex-col gap-6 w-full">
           <div className="flex flex-row justify-between">

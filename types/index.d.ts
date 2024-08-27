@@ -93,6 +93,7 @@ declare interface HeaderBoxProps {
   title: string;
   subtext: string;
   user?: string;
+  className?: string;
 }
 
 declare interface TabListItemProps {

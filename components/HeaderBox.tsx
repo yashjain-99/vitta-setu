@@ -5,9 +5,10 @@ const HeaderBox = ({
   title,
   subtext,
   user,
+  className,
 }: HeaderBoxProps) => {
   return (
-    <header>
+    <header className={className}>
       <h1 className="text-3xl font-inter font-semibold text-[#101828]">
         {title}
         {type === "greeting" && (
