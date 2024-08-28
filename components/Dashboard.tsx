@@ -15,7 +15,7 @@ const Dashboard = async () => {
   }
   return (
     <section className="flex flex-col lg:flex-row w-full max-h-dvh overflow-y-auto gap-6 lg:gap-0">
-      <div className="flex flex-1 flex-col gap-8 px-5 sm:px-8 py-7 lg:py-12 max-h-dvh">
+      <div className="flex flex-1 flex-col gap-8 px-8 py-12 max-h-dvh">
         <HeaderBox
           type="greeting"
           title="Welcome,"

@@ -23,9 +23,15 @@ export const SidebarItem = ({ item }: SidebarItemProps) => {
             isActive,
         }
       )}
+      onClick={() => {
+        const sidebarToggle = document.getElementById(
+          "sidebar-toggle"
+        ) as HTMLInputElement;
+        if (sidebarToggle) sidebarToggle.checked = false;
+      }}
     >
       <span>{item.icon}</span>
-      <span className=" hidden lg:block">{item.label}</span>
+      <span>{item.label}</span>
     </Link>
   );
 };
