@@ -22,6 +22,21 @@ Vitta-Setu is built using best practices of modern web development:
 - [TypeScript] - A strongly typed programming language that builds on JavaScript.
 - [Vercel] - For deployment, hosting, and CI/CD integration.
 
+## Stats
+
+_Login_
+![login_stats](https://github.com/user-attachments/assets/7fd64498-3f37-4679-824a-5bc3088e8e1f)
+
+_Dashboard_
+![home_stats](https://github.com/user-attachments/assets/3ae90d6c-aa0c-4918-994e-7ab55b7517d6)
+
+_Transaction history_
+![transaction_history_stats](https://github.com/user-attachments/assets/732e1238-70d2-4094-9524-c3f16cdb3d08)
+
+_My banks_
+![my_banks_stats](https://github.com/user-attachments/assets/32281a2c-1840-4113-a7ed-55a9a5ecc1b5)
+
+
 ## Usage
 
 Vitta-Setu can be accessed via a web browser and provides a smooth user experience without the need for installation. To get started:
